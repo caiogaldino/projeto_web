@@ -116,7 +116,7 @@ const loginUser = async (req, res) => {
     }
 
     const token = user.generateToken();
-    res.status(200).json({ user, token });
+    res.status(200).json({ user, token:'Login realizado com sucesso'});
   } catch (error) {
     res.status(400).json({ error: 'Erro ao fazer login' });
   }
