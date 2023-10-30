@@ -1,0 +1,9 @@
+GET  http://localhost:3000/
+Content-Type: application/json
+
+{
+    "nome": "caio",
+    "email": "test123@email.com",
+    "senhaHash":"senhasegura",
+    "telefone": 83999999999
+}
