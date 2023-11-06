@@ -107,7 +107,7 @@ const loginUser = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(401).json({ error: 'Credenciais inválidas' });
+      return res.status(401).json({ error: 'Email inválido' });
     }
 
     const isMatch = await user.comparePassword(senha);
@@ -116,7 +116,7 @@ const loginUser = async (req, res) => {
     }
 
     const token = user.generateToken();
-    res.status(200).json({ user, token:'Login realizado com sucesso'});
+    res.status(200).json({ user, token });
   } catch (error) {
     res.status(400).json({ error: 'Erro ao fazer login' });
   }
@@ -166,7 +166,7 @@ const deleteUser = async (req, res) => {
     if (!user) {
       res.status(404).json({ error: 'Usuário não encontrado' });
     } else {
-      res.status(204).end(); // Resposta sem conteúdo (usuário excluído com sucesso)
+      res.status(204).json(); // Resposta sem conteúdo (usuário excluído com sucesso)
     }
   } catch (error) {
     res.status(500).json({ error: 'Erro ao excluir o usuário' });

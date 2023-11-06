@@ -1,9 +1,9 @@
-GET  http://localhost:3000/
+POST  http://localhost:3000/register
 Content-Type: application/json
 
 {
-    "nome": "caio",
-    "email": "test123@email.com",
-    "senhaHash":"senhasegura",
+    "nome": "USUÁRIO TESTE",
+    "email": "testeusuario123@email.com",
+    "senha":"senha123456789",
     "telefone": 83999999999
 }

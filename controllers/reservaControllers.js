@@ -1,7 +1,10 @@
 const Reserva = require('../models/Reserva'); // Importe o modelo de reserva
+const jwt = require('jsonwebtoken');
+const verifyToken = require('../models/Reserva')
 
 // Controller para criar uma nova reserva
-const createReserva = async (req, res) => {
+/*const createReserva = async (req, res) => {
+  
   try {
     const novaReserva = new Reserva(req.body);
     await novaReserva.save();
@@ -9,6 +12,32 @@ const createReserva = async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: 'Não foi possível criar a reserva' });
   }
+};*/
+
+// Controller para criar uma nova reserva
+const createReserva = async (req, res) => {
+  // Verificação do token JWT antes de permitir a criação da reserva
+  const authorizationToken = req.headers.authorization
+
+  if (!authorizationToken) {
+    return res.status(401).json({ error: 'Token não fornecido' });
+  }
+  const [ , token ] = req.headers.authorization.split(" ");
+  jwt.verify(token, 'secret', async (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ error: 'Token inválido' });
+    }
+
+    try {
+      // associar o ID do usuário do token à reserva antes de criá-la
+      const novaReserva = await Reserva.create({ ...req.body, usuario: decoded.id });
+      
+      
+      res.status(201).json(novaReserva);
+    } catch (error) {
+      res.status(400).json({ error: 'Não foi possível criar a reserva' });
+    }
+  });
 };
 
 // Controller para listar todas as reservas

@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
 });
 
 // criptografa a senha
-userSchema.pre('save', async function (next) {
+/*userSchema.pre('save', async function (next) {
   const user = this;
   if (!user.isModified('senha')) return next();
 
@@ -40,11 +40,11 @@ userSchema.pre('save', async function (next) {
   } catch (error) {
     return next(error);
   }
-});
+});*/
 
 // comparar senhas
 userSchema.methods.comparePassword = function (senha) {
-  return bcrypt.compare(senha, this.senha);
+  return (senha, this.senha);
 };
 
 // gerar token JWT

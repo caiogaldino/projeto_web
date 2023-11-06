@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const reservaController = require('../controllers/reservaControllers'); 
+const verifyToken = require('../models/Reserva'); // Importe o middleware
+
 
 router.post('/reservas', reservaController.createReserva);
 

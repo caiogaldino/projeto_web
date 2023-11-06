@@ -16,7 +16,7 @@ router.post(
   );
   
   // Rota para fazer login e obter um token JWT
-  router.get(
+  router.post(
     '/login',
     [
       body('email').isEmail(),
