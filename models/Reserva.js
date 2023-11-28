@@ -5,12 +5,12 @@ const reservaSchema = new mongoose.Schema({
   usuario: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true,
+    
   },
-  moto: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Moto',
+  modeloSelecionado: {
+    type: String,
     required: true,
+    
   },
   dataInicio: {
     type: Date,

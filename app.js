@@ -7,6 +7,7 @@ const motoRoute = require('./routes/motoRoute');
 const aluguelRoute = require('./routes/aluguelRoute'); 
 
 app.use(express.json())
+app.use(cors());
 
 //db conn
 const conn = require("./db/conn.js");
