@@ -1,9 +1,14 @@
 // Login.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../service/api';
 import './Login.css'
+
+const checkAuthentication = () => {
+  const token = localStorage.getItem('token');
+  return !!token; // Retorna true se houver um token, indicando autenticação
+};
 
 const Login = () => {
   const navigateTo = useNavigate();
@@ -11,6 +16,21 @@ const Login = () => {
   const [senha, setSenha] = useState('');
   const [token, setToken] = useState('');
   const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const isAuthenticated = checkAuthentication();
+
+    if (isAuthenticated) {
+      // O usuário está autenticado, execute as ações necessárias
+      console.log('Usuário autenticado');
+      alert(`Você já está logado!`);
+      navigateTo('/');
+    } else {
+      // O usuário não está autenticado, redirecione para a página de login, por exemplo
+      console.log('Usuário não autenticado, redirecionando para o login');
+      navigateTo('/Login');
+    }
+  }, []);
 
   const handleLogin = async () => {
     try {
@@ -26,7 +46,7 @@ const Login = () => {
       // Armazene o token em localStorage
       localStorage.setItem('token', response.data.token);
       alert(`Bem-vindo, ${email}!`);
-      navigateTo('/reservas');
+      navigateTo('/');
 
       const { token } = response.data;
       setToken(token);
@@ -38,25 +58,26 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <div>
-        <label>Email:</label>
+    <div className='containerRegister'>
+      <h1>Login</h1>
+      <br />
+      <div className='formGroup'>
+        <label><strong>Email:</strong></label>
         <input
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <div>
-        <label>Senha:</label>
+      <div className='formGroup'>
+        <label><strong>Senha:</strong></label>
         <input
           type="password"
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
         />
       </div>
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleLogin} className='button'>Entrar</button>
     </div>
   );
 };

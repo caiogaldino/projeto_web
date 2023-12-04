@@ -51,20 +51,23 @@ const motorcyclesData = [
 
 const Home = () => {
   return (
-    <div>
+    <div className='bodyhome'>
       <h2>Conheça a nossa frota</h2>
-      <ul>
+      <br />
+      <ul className='homeul'>
         {motorcyclesData.map((motorcycle) => (
-          <li key={motorcycle.id}>
-            <h3>{motorcycle.name}</h3>
-            <img
+          <li className='homeli' key={motorcycle.id}>
+            
+            <img className='homeimg'
               src={motorcycle.image}
               alt={`Imagem do ${motorcycle.name}`}
               style={{ maxWidth: '100%', maxHeight: '200px' }}
             />
-            <p>{motorcycle.description}</p>
+            <p className='homep'><h3>{motorcycle.name}</h3></p>
             {/* Adicione um botão para a reserva ou ação desejada */}
-            <button><Link to={'/Login'}>Reservar</Link></button>
+            <button className='homebutton'>
+              <Link to={`/details/${motorcycle.id}`}>Ver Detalhes</Link>
+            </button>
           </li>
         ))}
       </ul>

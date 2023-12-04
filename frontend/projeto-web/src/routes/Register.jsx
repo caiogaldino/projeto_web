@@ -22,6 +22,7 @@ import './Register.css'
   
         // Exiba uma mensagem de sucesso ou redirecione para a tela de login
         console.log('Usuário registrado com sucesso:', response.data);
+        alert(`Sua conta foi criada com sucesso, ${nome}!`);
         navigateTo('/');
       } catch (error) {
         console.error('Erro ao registrar usuário:', error);
@@ -33,7 +34,7 @@ import './Register.css'
       <div className='containerRegister'>
         <h3>Cadastre-se para aproveitar as funcionalidades do site</h3>
         <div className='formGroup'>
-          <label>Nome: </label>
+          <label><strong>Nome:</strong> </label>
           <input
             type="text"
             value={nome}
@@ -41,7 +42,7 @@ import './Register.css'
           />
         </div>
         <div className='formGroup'>
-          <label>Email:</label>
+          <label><strong>Email:</strong></label>
           <input
             type="text"
             value={email}
@@ -49,7 +50,7 @@ import './Register.css'
           />
         </div>
         <div className='formGroup'>
-          <label>Senha:</label>
+          <label><strong>Senha:</strong></label>
           <input
             type="password"
             value={senha}
@@ -57,14 +58,14 @@ import './Register.css'
           />
         </div>
         <div className='formGroup'>
-          <label>Telefone:</label>
+          <label><strong>Telefone:</strong></label>
           <input
             type="tel"
             value={telefone}
             onChange={(e) => setTelefone(e.target.value)}
           />
         </div>
-        <button onClick={handleRegister} className='buttonRegister'>Cadastrar</button>
+        <button onClick={handleRegister} className='button'>Cadastrar</button>
       </div>
     );
 };

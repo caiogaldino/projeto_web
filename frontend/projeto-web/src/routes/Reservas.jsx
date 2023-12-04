@@ -4,8 +4,31 @@ import { useNavigate } from 'react-router-dom';
 import { api } from '../service/api';
 import './Reservas.css'
 
+
+
+// Função para verificar a autenticação
+const checkAuthentication = () => {
+  const token = localStorage.getItem('token');
+  return !!token; // Retorna true se houver um token, indicando autenticação
+};
+
+
 function App() {
-  
+  const navigateTo = useNavigate();
+  useEffect(() => {
+    const isAuthenticated = checkAuthentication();
+
+    if (isAuthenticated) {
+      // O usuário está autenticado, execute as ações necessárias
+      console.log('Usuário autenticado');
+    } else {
+      // O usuário não está autenticado, redirecione para a página de login, por exemplo
+      console.log('Usuário não autenticado, redirecionando para o login');
+      alert(`Você precisa estar logado para solicitar uma reserva`);
+      navigateTo('/Login');
+    }
+  }, []);
+
   const [modelo, setModelosMoto] = useState([]);
   const [modeloSelecionado, setModeloSelecionado] = useState('');
   
@@ -70,7 +93,7 @@ function App() {
       <br />
       <form onSubmit={handleSubmit}>
       <label className='formGroup'>
-        Selecione um modelo de moto:
+        <strong>Selecione um modelo de moto:</strong>
         <select value={modeloSelecionado} onChange={(e) => setModeloSelecionado(e.target.value)}>
           <option value="">Selecione...</option>
           {modelo.map((modelo) => (
@@ -83,16 +106,16 @@ function App() {
       
       </form>
       <label className='formGroup'>
-        Data Início:
+        <strong>Data Início:</strong>
         <input type="date" value={dataInicio} onChange={(e) => setDataInicio(e.target.value)} />
       </label>
       <label className='formGroup'>
-        Data Fim:
+        <strong>Data Fim:</strong>
         <input type="date" value={dataFim} onChange={(e) => setDataFim(e.target.value)} />
       </label>
       <br />
 
-      <button onClick={handleReserva}>Reservar</button>
+      <button onClick={handleReserva} className='button'>Reservar</button>
     </div>
   );
 }

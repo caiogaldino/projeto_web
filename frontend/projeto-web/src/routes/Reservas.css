@@ -13,10 +13,6 @@
     padding: 16px 1rem;
 }
 
-
-
-
-
 .formGroup {
     width: 100%;
     padding: 5px;
@@ -27,4 +23,25 @@
     align-items: center;
     justify-content: center;
     
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: #ff0000;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button a {
+    text-decoration: none;
+    color: white;
+}
+
+.button a:hover {
+    color: black;
+    font-weight: bolder;
 }

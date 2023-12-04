@@ -1,12 +1,12 @@
 /* Navbar.css */
 .navbar {
     background-color: #ff0000; /* Cor predominante vermelha */
-    padding: 10px 20px;
+    padding: 15px 0px;
   }
   
-  .center {
+.center {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: -10px auto;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -14,18 +14,45 @@
     align-items: center;
   }
   
-  .logo {
+.logo {
     color: #fff; /* Cor do texto do logo */
     font-size: 1.5em;
+    align-items: center;
   }
 
- 
-  .navlist li a {
+
+.navlist {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+  
+.navlist li {
+  
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.navlist li a {
     color: #fff;
     text-decoration: none;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
   }
+
+.navlist li a:hover {
+    color: #000000;
+    text-decoration: none;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    font-weight: bolder;
+  }
+
+  
   /* Adicione estilos adicionais conforme necessário */
   
     
