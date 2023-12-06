@@ -44,6 +44,10 @@ const router = createBrowserRouter([
         element: <Reservas />,
       },
       {
+        path: "/confirm",
+        element: <Confirm />,
+      },
+      {
         path: "/details/1",
         element: <Start160 />,
       },
@@ -81,6 +85,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 
 import { BrowserRouter as Router} from 'react-router-dom';
+import Confirm from './routes/Confirm.jsx';
 
 
 const Routes = () => {

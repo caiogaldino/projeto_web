@@ -80,7 +80,7 @@ function App() {
       setModeloSelecionado('');
       setDataInicio('');
       setDataFim('');
-      
+      navigateTo('/confirm');
       
     } catch (error) {
       console.error('Erro ao criar reserva:', error);

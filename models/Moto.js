@@ -2,14 +2,6 @@ const mongoose = require('mongoose');
 
 
 const motoSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-    required: true,
-  },
-  marca: {
-    type: String,
-    required: true,
-  },
   modelo: {
     type: String,
     required: true,
